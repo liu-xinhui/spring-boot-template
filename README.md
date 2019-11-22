@@ -3,6 +3,7 @@
 </h1>
 
 ### 配合使用的`vue`前端项目，请移步[vue-admin-template](https://github.com/liunewshine/vue-admin-template.git)
+### 项目演示：[地址](http://118.25.44.86:8011) 账号密码默认填充（admin，a123456）
 
 ## 简介
 多个`spring boot前后端分离管理系统`开发经验总结而成，使用`restful`风格`API`，
