@@ -95,6 +95,9 @@ docker build -t template-api:latest .
 #启动docker容器,可使用-e SPRING_PROFILES_ACTIVE=${env}指定环境，不指定则默认为dev
 docker run -itd --name template-api -e SPRING_PROFILES_ACTIVE=dev template-api:latest
 ```
+#### 若您的docker服务器开放了远程访问（外网记得启用TLS,否则不安全），可直接使用idea推送至服务器
+配置参考
+![idea docker参考考](https://uploader.shimo.im/f/4hiD65h6XJkDzNXI.png)
 
 #### 使用docker+jenkins部署
 
