@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.step.template.main.mapper.DeviceMapper">
+
+    <select id="selectWithPage" resultType="com.step.template.main.vo.DeviceVo">
+        select d.*,u.name as maintUserName
+        from device d left join user u on d.maintUserId = u.id
+        <where>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(svo.no)">
+                and d.no like CONCAT('%',#{svo.no},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(svo.name)">
+                and d.name like CONCAT('%',#{svo.name},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(svo.model)">
+                and d.model like CONCAT('%',#{svo.model},'%')
+            </if>
+            and d.deleted=0
+        </where>
+        ORDER BY d.id desc
+    </select>
+</mapper>

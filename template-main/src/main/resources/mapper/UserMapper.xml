@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.step.template.main.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.step.template.main.vo.UserVo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="deleted" jdbcType="INTEGER" property="deleted"/>
+        <result column="createBy" jdbcType="VARCHAR" property="createBy"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateBy" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <collection property="roles" ofType="com.step.template.main.entity.Role" columnPrefix="role_">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectWithPage" resultType="com.step.template.main.vo.UserVo">
+        select u.*
+        from user as u
+        <where>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(svo.phone)">
+                and u.phone like CONCAT('%',#{svo.phone},'%')
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotBlank(svo.name)">
+                and u.name like CONCAT('%',#{svo.name},'%')
+            </if>
+            and u.deleted=0
+        </where>
+        ORDER BY u.id desc
+    </select>
+
+    <!-- 查询某个用户拥有的角色 -->
+    <select id="getVoById" resultMap="BaseResultMap">
+        select u.*,
+               r.id   as role_id,
+               r.name as role_name
+        from user u
+                 left join user_role ur on u.id = ur.userId
+                 left join role r on r.id = ur.roleId
+        where u.id = #{id}
+    </select>
+
+    <!-- 批量插入到UserRole -->
+    <insert id="insertUserRole">
+        insert into
+        user_role
+        (userId, roleId)
+        values
+        <foreach collection="roles" item="role" separator=",">
+            ( #{userId},#{role.id} )
+        </foreach>
+    </insert>
+
+    <!-- 删除某个role对应的UserRole -->
+    <delete id="deleteUserRole" parameterType="int">
+        delete
+        from user_role
+        where userId = #{userId}
+    </delete>
+</mapper>
