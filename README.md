@@ -2,7 +2,7 @@
 <a href="https://github.com/liunewshine/spring-boot-template.git" target="_blank">Spring Boot Template(项目模板)</a>
 </h1>
 
-### 配合使用的`vue`前端项目，请移步[vue-admin-template](https://github.com/liunewshine/vue-admin-template.git)
+### 配合使用的`vue`前端项目和截图，请移步[vue-admin-template](https://github.com/liunewshine/vue-admin-template.git)
 ### 项目演示：<a href="http://118.25.44.86:8011" target="_blank">地址</a> 账号密码默认填充（admin，a123456）
 
 ## 简介
