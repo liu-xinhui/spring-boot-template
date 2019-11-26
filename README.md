@@ -99,7 +99,7 @@ docker run -itd --name template-api -e SPRING_PROFILES_ACTIVE=dev template-api:l
 #### 若您的docker服务器开放了远程访问（外网记得启用TLS,否则不安全），可直接使用idea推送至服务器
 配置参考
 
-![idea docker参考](https://uploader.shimo.im/f/EoUc4fQpW0c4Yv0W.png)
+![idea docker参考](https://uploader.shimo.im/f/nP4iFRwdCMYlCQ2T.png!thumbnail)
 
 #### 使用docker+jenkins部署
 
