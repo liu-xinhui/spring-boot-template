@@ -220,4 +220,4 @@ java -jar template-api.jar --spring.profiles.active=dev
 - `BaseService`提供字段唯一性检测，参考`userService`里的`phone`唯一检测
 ![唯一检测](https://uploader.shimo.im/f/KlStvBtThH8OZVKD.png)
 
-## 欢迎start，有疑问或者bug请提issue
+## 欢迎start，有疑问、建议、bug请提issue
