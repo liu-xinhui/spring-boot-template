@@ -1,5 +1,7 @@
 package com.step.template.main.exception;
 
+import org.apache.commons.lang3.exception.DefaultExceptionContext;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -10,7 +12,7 @@ public class MyException extends ResponseStatusException {
     }
 
     public MyException(String reason) {
-        super(HttpStatus.BAD_REQUEST, reason == null ? "" : reason);
+        super(HttpStatus.BAD_REQUEST, reason);
     }
 
     public MyException(HttpStatus status, String reason) {

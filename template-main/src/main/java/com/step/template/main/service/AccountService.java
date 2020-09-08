@@ -83,7 +83,7 @@ public class AccountService {
 
     private void checkUser(User user) {
         if (user == null) {
-            throw new MyException("用户不存在");
+            throw new RuntimeException("用户不存在");
         }
         if (Constant.UserStatus.disabled.name().equals(user.getStatus())) {
             throw new MyException("用户已被禁用");
